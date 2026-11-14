@@ -8,6 +8,7 @@ import http.server
 import socketserver
 import os
 import json
+import socket
 from datetime import datetime
 
 PORT = 8080
@@ -98,11 +99,25 @@ class PortfolioHandler(http.server.SimpleHTTPRequestHandler):
         self.send_response(404)
         self.end_headers()
 
+def get_local_ip():
+    try:
+        s = socket.socket(socket.AF_INET, socket.SOCK_DGRAM)
+        s.connect(("8.8.8.8", 80))
+        ip = s.getsockname()[0]
+        s.close()
+        return ip
+    except Exception:
+        return "localhost"
+
 if __name__ == "__main__":
     os.chdir(BASE_DIR)
     with socketserver.TCPServer(("", PORT), PortfolioHandler) as httpd:
+        lan_ip = get_local_ip()
         print("===========================================================")
-        print(f"  🚀 Portfolio Server running at http://localhost:{PORT}")
+        print(f"  🚀 Portfolio Server is running!")
+        print(f"  🌐 Kompyuterda (PC):   http://localhost:{PORT}")
+        if lan_ip != "localhost" and not lan_ip.startswith("127."):
+            print(f"  📱 Telifonda (Mobile): http://{lan_ip}:{PORT}  (Bir xil Wi-Fi tarmog'ida)")
         print("===========================================================")
         try:
             httpd.serve_forever()

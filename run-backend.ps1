@@ -28,7 +28,8 @@ if ($LASTEXITCODE -ne 0) {
 }
 
 Write-Host "[2/2] Server ishga tushirilmoqda (Starting server on port 8080)..." -ForegroundColor Green
-Write-Host "Brauzerda ochish uchun: http://localhost:8080" -ForegroundColor Cyan
+Write-Host "PC brauzerida:      http://localhost:8080" -ForegroundColor Cyan
+Write-Host "Telifonda ochish:   Bir xil Wi-Fi tarmog'ida server chiqargan IP orqali ochiladi" -ForegroundColor Yellow
 Write-Host ""
 
 & $javaPath -cp backend\bin com.abdulahad.portfolio.BackendServer 8080

@@ -5,7 +5,10 @@ import com.sun.net.httpserver.HttpHandler;
 import com.sun.net.httpserver.HttpServer;
 
 import java.io.*;
+import java.net.InetAddress;
+import java.net.Inet4Address;
 import java.net.InetSocketAddress;
+import java.net.NetworkInterface;
 import java.net.URLConnection;
 import java.nio.charset.StandardCharsets;
 import java.nio.file.Files;
@@ -13,6 +16,7 @@ import java.nio.file.Path;
 import java.nio.file.Paths;
 import java.nio.file.StandardOpenOption;
 import java.time.Instant;
+import java.util.Enumeration;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicLong;
 
@@ -79,14 +83,18 @@ public class BackendServer {
 
             server.start();
 
+            String lanIp = getNetworkIp();
             System.out.println("===========================================================");
             System.out.println("  🚀 ABDULAHAD MAHMUDJONOV - JAVA BACKEND SERVER IS RUNNING!");
-            System.out.println("  🌐 Portfolio URL:   http://localhost:" + port);
-            System.out.println("  ⚡ Health Check:    http://localhost:" + port + "/api/health");
-            System.out.println("  📊 System Stats:    http://localhost:" + port + "/api/stats");
-            System.out.println("  📩 Messages Admin:  http://localhost:" + port + "/api/messages");
-            System.out.println("  📁 Root directory:  " + rootDir.toAbsolutePath());
-            System.out.println("  ☕ Java Runtime:    " + System.getProperty("java.version") + " (" + System.getProperty("java.vendor") + ")");
+            System.out.println("  🌐 Kompyuterda (PC):   http://localhost:" + port);
+            if (!"localhost".equals(lanIp) && !"127.0.0.1".equals(lanIp)) {
+                System.out.println("  📱 Telifonda (Mobile): http://" + lanIp + ":" + port + "  (Bir xil Wi-Fi tarmog'ida)");
+            }
+            System.out.println("  ⚡ Health Check:       http://localhost:" + port + "/api/health");
+            System.out.println("  📊 System Stats:       http://localhost:" + port + "/api/stats");
+            System.out.println("  📩 Messages Admin:     http://localhost:" + port + "/api/messages");
+            System.out.println("  📁 Root directory:     " + rootDir.toAbsolutePath());
+            System.out.println("  ☕ Java Runtime:       " + System.getProperty("java.version") + " (" + System.getProperty("java.vendor") + ")");
             System.out.println("===========================================================");
             System.out.println("Press Ctrl+C to terminate the server.");
 
@@ -97,6 +105,27 @@ public class BackendServer {
                 main(new String[]{"8081"});
             }
         }
+    }
+
+    private static String getNetworkIp() {
+        try {
+            Enumeration<NetworkInterface> interfaces = NetworkInterface.getNetworkInterfaces();
+            while (interfaces != null && interfaces.hasMoreElements()) {
+                NetworkInterface iface = interfaces.nextElement();
+                if (iface.isLoopback() || !iface.isUp()) continue;
+                Enumeration<InetAddress> addresses = iface.getInetAddresses();
+                while (addresses.hasMoreElements()) {
+                    InetAddress addr = addresses.nextElement();
+                    if (addr instanceof Inet4Address && !addr.isLoopbackAddress() && !addr.getHostAddress().startsWith("169.254")) {
+                        return addr.getHostAddress();
+                    }
+                }
+            }
+        } catch (Exception ignored) {}
+        try {
+            return InetAddress.getLocalHost().getHostAddress();
+        } catch (Exception ignored) {}
+        return "localhost";
     }
 
     // ============================================================

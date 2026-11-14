@@ -2,12 +2,19 @@
 <html lang="uz">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover">
   <title>Abdulahad Mahmudjonov | Java Backend Developer</title>
   <meta name="description" content="Abdulahad Mahmudjonov — Professional Java Backend Developer. Spring Boot, REST APIs, PostgreSQL, Clean Architecture, and High-Performance Systems.">
   <meta name="keywords" content="Abdulahad Mahmudjonov, Java Developer, Backend Developer, Spring Boot, PostgreSQL, Tashkent, Portfolio">
   <meta name="author" content="Abdulahad Mahmudjonov">
   <meta name="theme-color" content="#0a0f0d">
+
+  <!-- Mobile App Manifest & Web Capabilities -->
+  <link rel="manifest" href="site.webmanifest">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+  <meta name="apple-mobile-web-app-title" content="Abdulahad Dev">
 
   <!-- Favicon -->
   <link rel="icon" type="image/svg+xml" href="img/profile.svg">
@@ -65,13 +72,13 @@
           <i class="fas fa-moon"></i>
         </button>
 
-        <!-- CV Modal Trigger -->
-        <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.88rem;" data-cv-modal>
+        <!-- CV Modal Trigger (Desktop / Tablet) -->
+        <button class="btn btn-secondary nav-cv-btn" style="padding: 8px 16px; font-size: 0.88rem;" data-cv-modal>
           <i class="fas fa-file-alt"></i> <span data-i18n="nav_cv">CV</span>
         </button>
 
         <!-- Mobile Hamburger Toggle -->
-        <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Open Menu">
+        <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Menyuni ochish">
           <i class="fas fa-bars"></i>
         </button>
       </div>
@@ -79,17 +86,31 @@
   </nav>
 
   <!-- Mobile Slide Drawer -->
-  <div id="mobile-drawer" class="mobile-drawer">
-    <a href="#hero" data-i18n="nav_home">Bosh sahifa</a>
-    <a href="#about" data-i18n="nav_about">Men haqimda</a>
-    <a href="#skills" data-i18n="nav_skills">Ko'nikmalar</a>
-    <a href="#projects" data-i18n="nav_projects">Loyihalar</a>
-    <a href="#roadmap" data-i18n="nav_roadmap">Yo'l xaritasi</a>
-    <a href="#contact" data-i18n="nav_contact">Aloqa</a>
-    <button class="btn btn-primary" style="margin-top: 10px; width: 100%;" data-cv-modal>
-      <i class="fas fa-file-pdf"></i> <span data-i18n="nav_cv">CV yuklab olish</span>
-    </button>
+  <div id="mobile-drawer" class="mobile-drawer" aria-hidden="true">
+    <div class="mobile-drawer-header">
+      <div class="mobile-drawer-brand">
+        <span class="logo">AM<span class="logo-dot">.</span></span>
+        <span class="logo-sub">&lt;dev/&gt;</span>
+      </div>
+      <button id="mobile-drawer-close" class="mobile-drawer-close" aria-label="Menyuni yopish">
+        <i class="fas fa-times"></i>
+      </button>
+    </div>
+    <div class="mobile-drawer-nav">
+      <a href="#hero" class="mobile-link active"><i class="fas fa-home"></i> <span data-i18n="nav_home">Bosh sahifa</span></a>
+      <a href="#about" class="mobile-link"><i class="fas fa-user-circle"></i> <span data-i18n="nav_about">Men haqimda</span></a>
+      <a href="#skills" class="mobile-link"><i class="fas fa-code"></i> <span data-i18n="nav_skills">Ko'nikmalar</span></a>
+      <a href="#projects" class="mobile-link"><i class="fas fa-cubes"></i> <span data-i18n="nav_projects">Loyihalar</span></a>
+      <a href="#roadmap" class="mobile-link"><i class="fas fa-road"></i> <span data-i18n="nav_roadmap">Yo'l xaritasi</span></a>
+      <a href="#contact" class="mobile-link"><i class="fas fa-envelope"></i> <span data-i18n="nav_contact">Aloqa</span></a>
+    </div>
+    <div class="mobile-drawer-footer">
+      <button class="btn btn-primary" style="width: 100%;" data-cv-modal>
+        <i class="fas fa-file-pdf"></i> <span data-i18n="nav_cv">CV yuklab olish</span>
+      </button>
+    </div>
   </div>
+  <div id="mobile-drawer-backdrop" class="mobile-drawer-backdrop"></div>
 
   <!-- ============================================================
        HERO SECTION

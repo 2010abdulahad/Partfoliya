@@ -29,6 +29,8 @@ document.addEventListener('DOMContentLoaded', () => {
   const currentLangLabel = document.getElementById('current-lang-label');
   const mobileNavToggle = document.getElementById('mobile-nav-toggle');
   const mobileDrawer = document.getElementById('mobile-drawer');
+  const mobileDrawerBackdrop = document.getElementById('mobile-drawer-backdrop');
+  const mobileDrawerClose = document.getElementById('mobile-drawer-close');
   const scrollToTopBtn = document.getElementById('scroll-to-top');
   const backendStatusPill = document.getElementById('backend-status-pill');
   const statusIndicator = document.getElementById('status-indicator');
@@ -368,7 +370,7 @@ document.addEventListener('DOMContentLoaded', () => {
         <p style="color: var(--text-secondary); line-height: 1.7;">${summaryText}</p>
       </div>
 
-      <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 25px;">
+      <div class="cv-modal-grid">
         <div>
           <h4 style="color: var(--text-primary); margin-bottom: 8px;">Technical Stack:</h4>
           <ul style="color: var(--text-muted); padding-left: 20px; font-size: 0.95rem; line-height: 1.6;">
@@ -602,7 +604,7 @@ document.addEventListener('DOMContentLoaded', () => {
       scrollToTopBtn?.classList.remove('show');
     }
 
-    // Active nav links on scroll
+    // Active nav links on scroll (Desktop & Mobile)
     const sections = document.querySelectorAll('section, header');
     const scrollPos = window.scrollY + 120;
 
@@ -612,10 +614,10 @@ document.addEventListener('DOMContentLoaded', () => {
       const id = sec.getAttribute('id');
       if (scrollPos >= top && scrollPos < top + height) {
         document.querySelectorAll('.nav-links a').forEach(a => {
-          a.classList.remove('active');
-          if (a.getAttribute('href') === `#${id}`) {
-            a.classList.add('active');
-          }
+          a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
+        });
+        document.querySelectorAll('.mobile-link').forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === `#${id}`);
         });
       }
     });
@@ -627,26 +629,87 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
-  // Mobile Drawer Toggle
-  if (mobileNavToggle && mobileDrawer) {
-    mobileNavToggle.addEventListener('click', () => {
-      mobileDrawer.classList.toggle('open');
+  // ============================================================
+  // 11. MOBILE DRAWER & NAVIGATION
+  // ============================================================
+  function openMobileDrawer() {
+    if (!mobileDrawer) return;
+    mobileDrawer.classList.add('open');
+    mobileDrawer.setAttribute('aria-hidden', 'false');
+    if (mobileDrawerBackdrop) mobileDrawerBackdrop.classList.add('open');
+    if (mobileNavToggle) {
       const icon = mobileNavToggle.querySelector('i');
       if (icon) {
-        icon.classList.toggle('fa-bars');
-        icon.classList.toggle('fa-times');
+        icon.classList.remove('fa-bars');
+        icon.classList.add('fa-times');
+      }
+      mobileNavToggle.setAttribute('aria-label', 'Menyuni yopish');
+    }
+    document.body.style.overflow = 'hidden';
+  }
+
+  function closeMobileDrawer() {
+    if (!mobileDrawer) return;
+    mobileDrawer.classList.remove('open');
+    mobileDrawer.setAttribute('aria-hidden', 'true');
+    if (mobileDrawerBackdrop) mobileDrawerBackdrop.classList.remove('open');
+    if (mobileNavToggle) {
+      const icon = mobileNavToggle.querySelector('i');
+      if (icon) {
+        icon.classList.remove('fa-times');
+        icon.classList.add('fa-bars');
+      }
+      mobileNavToggle.setAttribute('aria-label', 'Menyuni ochish');
+    }
+    document.body.style.overflow = '';
+  }
+
+  if (mobileNavToggle && mobileDrawer) {
+    mobileNavToggle.addEventListener('click', (e) => {
+      e.stopPropagation();
+      if (mobileDrawer.classList.contains('open')) {
+        closeMobileDrawer();
+      } else {
+        openMobileDrawer();
       }
     });
 
-    mobileDrawer.querySelectorAll('a').forEach(link => {
+    if (mobileDrawerClose) {
+      mobileDrawerClose.addEventListener('click', closeMobileDrawer);
+    }
+
+    if (mobileDrawerBackdrop) {
+      mobileDrawerBackdrop.addEventListener('click', closeMobileDrawer);
+    }
+
+    // Close when tapping navigation link inside drawer
+    mobileDrawer.querySelectorAll('.mobile-link').forEach(link => {
       link.addEventListener('click', () => {
-        mobileDrawer.classList.remove('open');
-        const icon = mobileNavToggle.querySelector('i');
-        if (icon) {
-          icon.classList.add('fa-bars');
-          icon.classList.remove('fa-times');
-        }
+        closeMobileDrawer();
       });
     });
+
+    // Close when CV button inside drawer is clicked
+    mobileDrawer.querySelectorAll('[data-cv-modal]').forEach(btn => {
+      btn.addEventListener('click', () => {
+        closeMobileDrawer();
+      });
+    });
+
+    // Close drawer on resize to desktop view
+    window.addEventListener('resize', () => {
+      if (window.innerWidth > 768 && mobileDrawer.classList.contains('open')) {
+        closeMobileDrawer();
+      }
+    });
   }
+
+  // Close modals or mobile drawer on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape') {
+      if (mobileDrawer && mobileDrawer.classList.contains('open')) {
+        closeMobileDrawer();
+      }
+    }
+  });
 });
