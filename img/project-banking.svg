@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 240" width="100%" height="100%">
+  <defs>
+    <linearGradient id="bankBg" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#0f172a"/>
+      <stop offset="100%" stop-color="#1e3a5f"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="240" rx="12" fill="url(#bankBg)"/>
+  <rect x="25" y="25" width="350" height="190" rx="8" fill="#0d1b2a" stroke="#0ea5e9" stroke-width="1.5" opacity="0.95"/>
+  <circle cx="45" cy="45" r="4" fill="#ef4444"/>
+  <circle cx="60" cy="45" r="4" fill="#eab308"/>
+  <circle cx="75" cy="45" r="4" fill="#10b981"/>
+  <text x="100" y="49" fill="#7dd3fc" font-family="monospace" font-size="12">BankingApi.java — Spring Boot REST</text>
+
+  <!-- Flowchart / architecture -->
+  <rect x="45" y="70" width="90" height="40" rx="6" fill="#1e293b" stroke="#0284c7"/>
+  <text x="55" y="88" fill="#38bdf8" font-family="monospace" font-size="10">Client Req</text>
+  <text x="55" y="102" fill="#94a3b8" font-family="monospace" font-size="9">JWT Token</text>
+
+  <!-- Arrow -->
+  <line x1="135" y1="90" x2="160" y2="90" stroke="#0ea5e9" stroke-width="2"/>
+  <polygon points="160,86 168,90 160,94" fill="#0ea5e9"/>
+
+  <rect x="170" y="70" width="100" height="40" rx="6" fill="#1e293b" stroke="#0284c7"/>
+  <text x="178" y="88" fill="#38bdf8" font-family="monospace" font-size="10">@Transactional</text>
+  <text x="178" y="102" fill="#4ade80" font-family="monospace" font-size="9">ACID Compliant</text>
+
+  <!-- Arrow -->
+  <line x1="270" y1="90" x2="295" y2="90" stroke="#0ea5e9" stroke-width="2"/>
+  <polygon points="295,86 303,90 295,94" fill="#0ea5e9"/>
+
+  <rect x="305" y="70" width="55" height="40" rx="6" fill="#1e293b" stroke="#0284c7"/>
+  <text x="312" y="88" fill="#38bdf8" font-family="monospace" font-size="10">Postgres</text>
+  <text x="312" y="102" fill="#e0f2fe" font-family="monospace" font-size="9">WAL Log</text>
+
+  <!-- Console Log bottom -->
+  <rect x="45" y="125" width="315" height="75" rx="6" fill="#050a10"/>
+  <text x="55" y="145" fill="#38bdf8" font-family="monospace" font-size="10">POST /api/v1/transfers (200 OK - 8ms)</text>
+  <text x="55" y="162" fill="#a5f3fc" font-family="monospace" font-size="9">Payload: {"from": "ACC-901", "to": "ACC-304", "amount": 250.00}</text>
+  <text x="55" y="178" fill="#4ade80" font-family="monospace" font-size="9">Ledger balanced: Verified 0.00 drift</text>
+  <text x="55" y="192" fill="#94a3b8" font-family="monospace" font-size="9">Audit event dispatched to Kafka / EventBus</text>
+</svg>

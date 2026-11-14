@@ -1,0 +1,691 @@
+<!DOCTYPE html>
+<html lang="uz">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Abdulahad Mahmudjonov | Java Backend Developer</title>
+  <meta name="description" content="Abdulahad Mahmudjonov — Professional Java Backend Developer. Spring Boot, REST APIs, PostgreSQL, Clean Architecture, and High-Performance Systems.">
+  <meta name="keywords" content="Abdulahad Mahmudjonov, Java Developer, Backend Developer, Spring Boot, PostgreSQL, Tashkent, Portfolio">
+  <meta name="author" content="Abdulahad Mahmudjonov">
+  <meta name="theme-color" content="#0a0f0d">
+
+  <!-- Favicon -->
+  <link rel="icon" type="image/svg+xml" href="img/profile.svg">
+  <link rel="icon" type="image/x-icon" href="favicon.ico">
+
+  <!-- Google Fonts & FontAwesome -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+
+  <!-- Stylesheet -->
+  <link rel="stylesheet" href="css/style.css">
+</head>
+<body class="dark-mode">
+
+  <!-- ============================================================
+       TOP NAVIGATION BAR
+       ============================================================ -->
+  <nav id="navbar">
+    <div class="container">
+      <div class="nav-left">
+        <a href="#hero" class="logo">
+          AM<span class="logo-dot">.</span>
+        </a>
+        <span class="logo-sub">&lt;dev/&gt;</span>
+      </div>
+
+      <ul class="nav-links">
+        <li><a href="#hero" class="active" data-i18n="nav_home">Bosh sahifa</a></li>
+        <li><a href="#about" data-i18n="nav_about">Men haqimda</a></li>
+        <li><a href="#skills" data-i18n="nav_skills">Ko'nikmalar</a></li>
+        <li><a href="#projects" data-i18n="nav_projects">Loyihalar</a></li>
+        <li><a href="#roadmap" data-i18n="nav_roadmap">Yo'l xaritasi</a></li>
+        <li><a href="#contact" data-i18n="nav_contact">Aloqa</a></li>
+      </ul>
+
+      <div class="nav-actions">
+        <!-- Language Selector -->
+        <div class="lang-dropdown">
+          <button id="lang-btn" class="lang-btn" aria-label="Select Language">
+            <i class="fas fa-globe"></i>
+            <span id="current-lang-label">UZ</span>
+            <i class="fas fa-chevron-down" style="font-size: 0.7rem;"></i>
+          </button>
+          <div id="lang-menu" class="lang-menu">
+            <button class="lang-option active" data-lang="uz">🇺🇿 O'zbekcha</button>
+            <button class="lang-option" data-lang="ru">🇷🇺 Русский</button>
+            <button class="lang-option" data-lang="en">🇬🇧 English</button>
+          </div>
+        </div>
+
+        <!-- Theme Toggle (Dark / Light) -->
+        <button id="theme-toggle" aria-label="Mavzuni almashtirish" title="Oq / Qora fon">
+          <i class="fas fa-moon"></i>
+        </button>
+
+        <!-- CV Modal Trigger -->
+        <button class="btn btn-secondary" style="padding: 8px 16px; font-size: 0.88rem;" data-cv-modal>
+          <i class="fas fa-file-alt"></i> <span data-i18n="nav_cv">CV</span>
+        </button>
+
+        <!-- Mobile Hamburger Toggle -->
+        <button id="mobile-nav-toggle" class="mobile-nav-toggle" aria-label="Open Menu">
+          <i class="fas fa-bars"></i>
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Mobile Slide Drawer -->
+  <div id="mobile-drawer" class="mobile-drawer">
+    <a href="#hero" data-i18n="nav_home">Bosh sahifa</a>
+    <a href="#about" data-i18n="nav_about">Men haqimda</a>
+    <a href="#skills" data-i18n="nav_skills">Ko'nikmalar</a>
+    <a href="#projects" data-i18n="nav_projects">Loyihalar</a>
+    <a href="#roadmap" data-i18n="nav_roadmap">Yo'l xaritasi</a>
+    <a href="#contact" data-i18n="nav_contact">Aloqa</a>
+    <button class="btn btn-primary" style="margin-top: 10px; width: 100%;" data-cv-modal>
+      <i class="fas fa-file-pdf"></i> <span data-i18n="nav_cv">CV yuklab olish</span>
+    </button>
+  </div>
+
+  <!-- ============================================================
+       HERO SECTION
+       ============================================================ -->
+  <header id="hero">
+    <div class="container hero-content">
+      <div class="hero-text">
+        <div class="badge">
+          <span class="pulse-dot"></span>
+          <span data-i18n="hero_badge">HAMKORLIKKA TAYYOR</span>
+        </div>
+        
+        <h1>
+          <span data-i18n="hero_greeting">Salom, men</span><br>
+          <span class="highlight" data-i18n="hero_name">Abdulahad Mahmudjonov</span>
+        </h1>
+
+        <div class="typewriter-container">
+          <span class="role-prefix">&gt;</span>
+          <span id="role-typing" class="role-typing">Java Backend Developer</span>
+          <span class="cursor-blink"></span>
+        </div>
+
+        <p class="slogan" data-i18n="hero_slogan">
+          Murakkab muammolarga — sodda, tezkor, xavfsiz va ishonchli backend yechimlar. Yuqori yuklamali tizimlar va toza kod yozishga intiluvchi dasturchi.
+        </p>
+
+        <div class="hero-btns">
+          <a href="#contact" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i> <span data-i18n="hero_btn_contact">Bog'lanish</span>
+          </a>
+          <a href="#projects" class="btn btn-secondary">
+            <i class="fas fa-laptop-code"></i> <span data-i18n="hero_btn_projects">Loyihalarim</span>
+          </a>
+          <button class="btn-link" data-cv-modal>
+            <i class="fas fa-arrow-down"></i> <span data-i18n="hero_btn_cv">CV yuklab olish</span>
+          </button>
+        </div>
+      </div>
+
+      <div class="hero-visual">
+        <div class="profile-card">
+          <div class="profile-img-container">
+            <img src="img/profile.svg" alt="Abdulahad Mahmudjonov" class="profile-img">
+            <span class="profile-online-indicator" title="Online & Ready"></span>
+          </div>
+          <h3 class="profile-name">Abdulahad M.</h3>
+          <p class="profile-title">Java Backend Engineer</p>
+          <div class="tech-tags">
+            <span>#java</span>
+            <span>#spring_boot</span>
+            <span>#postgresql</span>
+            <span>#docker</span>
+            <span>#clean_code</span>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <a href="#about" class="scroll-down">
+      <span data-i18n="scroll_down">PASTGA</span>
+      <i class="fas fa-chevron-down"></i>
+    </a>
+  </header>
+
+  <!-- ============================================================
+       STATS SECTION
+       ============================================================ -->
+  <section class="stats-section">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item">
+          <h2 data-i18n="stat_age_num">16</h2>
+          <div class="stat-title" data-i18n="stat_age_title">YOSH</div>
+          <div class="stat-desc" data-i18n="stat_age_desc">Yosh va maksimal motivatsiyali</div>
+        </div>
+        <div class="stat-item">
+          <h2 data-i18n="stat_projects_num">4+</h2>
+          <div class="stat-title" data-i18n="stat_projects_title">LOYIHALAR</div>
+          <div class="stat-desc" data-i18n="stat_projects_desc">Haqiqiy amaliy loyihalar</div>
+        </div>
+        <div class="stat-item">
+          <h2 data-i18n="stat_tech_num">10+</h2>
+          <div class="stat-title" data-i18n="stat_tech_title">TEXNOLOGIYALAR</div>
+          <div class="stat-desc" data-i18n="stat_tech_desc">Zamonaviy backend vositalari</div>
+        </div>
+        <div class="stat-item">
+          <h2 data-i18n="stat_motivation_num">100%</h2>
+          <div class="stat-title" data-i18n="stat_motivation_title">KOD SIFATI</div>
+          <div class="stat-desc" data-i18n="stat_motivation_desc">Toza arxitektura & OOP</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ABOUT SECTION
+       ============================================================ -->
+  <section id="about">
+    <div class="container">
+      <h2 data-i18n="about_title">Men haqimda</h2>
+      <p class="section-subtitle" data-i18n="about_subtitle">Backend muhandisligi va dasturlashga bo'lgan ishtiyoqim</p>
+
+      <div class="about-content">
+        <div class="about-text">
+          <p data-i18n="about_p1">
+            Men <strong>Abdulahad Mahmudjonov</strong> — zamonaviy va xavfsiz <strong>Java Backend</strong> tizimlarini yaratishga ixtisoslashgan yosh va g'ayratli dasturchiman.
+          </p>
+          <p data-i18n="about_p2">
+            Dasturlashda asosiy e'tiborimni <strong>Java Core, OOP tamoyillari, Ma'lumotlar tuzilmalari, Spring Boot</strong> va ma'lumotlar bazalarining yuqori unumdorligiga qarataman. Har bir loyihamda kodning tozaligi (Clean Code), SOLID qoidalari va xavfsizlik birinchi o'rinda turadi.
+          </p>
+          <p data-i18n="about_p3">
+            Doimiy ravishda yangi texnologiyalarni o'rganish, mikroxizmatlar (microservices) arxitekturasi va real biznes masalalarini hal qiluvchi kuchli tizimlar yaratish ustida ishlayapman.
+          </p>
+
+          <div class="about-highlights">
+            <h4 data-i18n="about_highlights_title">Asosiy yo'nalishlarim:</h4>
+            <ul>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="about_h1">Ishonchli va xavfsiz RESTful API larni loyihalash</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="about_h2">Ma'lumotlar bazalarini optimallashtirish (SQL, PostgreSQL, Indexing)</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="about_h3">Ko'p oqimli (Multithreading) va tezkor backend jarayonlar</span></li>
+              <li><i class="fas fa-check-circle"></i> <span data-i18n="about_h4">Doimiy izlanish, intizom va jamoa bilan samarali ishlash</span></li>
+            </ul>
+          </div>
+        </div>
+
+        <div class="about-code">
+          <div class="profile-json-card">
+            <div class="terminal-header">
+              <div class="terminal-dots">
+                <span class="terminal-dot dot-red"></span>
+                <span class="terminal-dot dot-yellow"></span>
+                <span class="terminal-dot dot-green"></span>
+              </div>
+              <span class="terminal-title">developer_profile.json</span>
+              <button id="copy-json-btn" class="btn-copy-json" title="Copy JSON">
+                <i class="far fa-copy"></i> <span data-i18n="json_copy_btn">JSON nusxalash</span>
+              </button>
+            </div>
+            <pre class="terminal-body"><code id="profile-json-code">{
+  <span class="json-key">"name"</span>: <span class="json-string">"Abdulahad Mahmudjonov"</span>,
+  <span class="json-key">"title"</span>: <span class="json-string">"Java Backend Engineer"</span>,
+  <span class="json-key">"age"</span>: <span class="json-number">16</span>,
+  <span class="json-key">"location"</span>: <span class="json-string">"Tashkent, Uzbekistan"</span>,
+  <span class="json-key">"core_stack"</span>: [
+    <span class="json-string">"Java 21"</span>,
+    <span class="json-string">"Spring Boot"</span>,
+    <span class="json-string">"Hibernate / JPA"</span>,
+    <span class="json-string">"PostgreSQL"</span>,
+    <span class="json-string">"Docker"</span>
+  ],
+  <span class="json-key">"principles"</span>: [
+    <span class="json-string">"Clean Code"</span>,
+    <span class="json-string">"SOLID"</span>,
+    <span class="json-string">"KISS"</span>,
+    <span class="json-string">"DRY"</span>
+  ],
+  <span class="json-key">"open_to_hire"</span>: <span class="json-boolean">true</span>,
+  <span class="json-key">"status"</span>: <span class="json-string">"Building robust systems 🚀"</span>
+}</code></pre>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       SKILLS SECTION
+       ============================================================ -->
+  <section id="skills">
+    <div class="container">
+      <h2 data-i18n="skills_title">Texnologiyalar & Stack</h2>
+      <p class="section-subtitle" data-i18n="skills_subtitle">Loyihalarimda qo'llaydigan professional vositalar va ko'nikmalar</p>
+
+      <div class="filter-tabs">
+        <button class="filter-btn skill-filter-btn active" data-filter="all" data-i18n="filter_all">Barchasi</button>
+        <button class="filter-btn skill-filter-btn" data-filter="backend" data-i18n="filter_backend">Backend & Core</button>
+        <button class="filter-btn skill-filter-btn" data-filter="database" data-i18n="filter_database">Ma'lumotlar bazasi</button>
+        <button class="filter-btn skill-filter-btn" data-filter="tools" data-i18n="filter_tools">Asboblar & DevOps</button>
+        <button class="filter-btn skill-filter-btn" data-filter="arch" data-i18n="filter_arch">Arxitektura & Asoslar</button>
+      </div>
+
+      <div class="skills-grid">
+        <!-- Java -->
+        <div class="skill-card" data-category="backend">
+          <div class="skill-header">
+            <div class="skill-icon-wrap"><i class="fab fa-java"></i></div>
+            <span class="skill-level-badge">90%</span>
+          </div>
+          <h3>Java 21 / Core</h3>
+          <p data-i18n="skill_java_desc">OOP, Collections, Stream API, Multithreading, Generics, Lambdas</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+        </div>
+
+        <!-- Spring Boot -->
+        <div class="skill-card" data-category="backend">
+          <div class="skill-header">
+            <div class="skill-icon-wrap"><i class="fas fa-leaf"></i></div>
+            <span class="skill-level-badge">85%</span>
+          </div>
+          <h3>Spring Boot</h3>
+          <p data-i18n="skill_spring_desc">Spring Boot, Spring MVC, Spring Data JPA, Spring Security asoslari</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+        </div>
+
+        <!-- Hibernate / JPA -->
+        <div class="skill-card" data-category="backend">
+          <div class="skill-header">
+            <div class="skill-icon-wrap"><i class="fas fa-database"></i></div>
+            <span class="skill-level-badge">80%</span>
+          </div>
+          <h3>Hibernate & JPA</h3>
+          <p data-i18n="skill_hibernate_desc">Entity mapping, HQL/JPQL, Caching, Tranzaksiyalar boshqaruvi</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+        </div>
+
+        <!-- PostgreSQL -->
+        <div class="skill-card" data-category="database">
+          <div class="skill-header">
+            <div class="skill-icon-wrap"><i class="fas fa-server"></i></div>
+            <span class="skill-level-badge">85%</span>
+          </div>
+          <h3>PostgreSQL & SQL</h3>
+          <p data-i18n="skill_postgres_desc">Murakkab so'rovlar, Joins, Triggers, Indexing, Tranzaksiyalar</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+        </div>
+
+        <!-- Redis -->
+        <div class="skill-card" data-category="database">
+          <div class="skill-header">
+            <div class="skill-icon-wrap"><i class="fas fa-bolt"></i></div>
+            <span class="skill-level-badge">75%</span>
+          </div>
+          <h3>Redis</h3>
+          <p data-i18n="skill_redis_desc">Keshlashtirish, In-memory xotira, Key-value data strukturasi</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width: 75%;"></div></div>
+        </div>
+
+        <!-- RESTful APIs -->
+        <div class="skill-card" data-category="backend">
+          <div class="skill-header">
+            <div class="skill-icon-wrap"><i class="fas fa-network-wired"></i></div>
+            <span class="skill-level-badge">90%</span>
+          </div>
+          <h3>RESTful API Design</h3>
+          <p data-i18n="skill_rest_desc">REST arxitekturasi, HTTP metodlar, Status kodlar, Swagger/OpenAPI</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width: 90%;"></div></div>
+        </div>
+
+        <!-- Docker -->
+        <div class="skill-card" data-category="tools">
+          <div class="skill-header">
+            <div class="skill-icon-wrap"><i class="fab fa-docker"></i></div>
+            <span class="skill-level-badge">75%</span>
+          </div>
+          <h3>Docker</h3>
+          <p data-i18n="skill_docker_desc">Konteynerlashtirish, Dockerfile, Container tarmoqlari</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width: 75%;"></div></div>
+        </div>
+
+        <!-- Git & GitHub -->
+        <div class="skill-card" data-category="tools">
+          <div class="skill-header">
+            <div class="skill-icon-wrap"><i class="fab fa-git-alt"></i></div>
+            <span class="skill-level-badge">85%</span>
+          </div>
+          <h3>Git & GitHub</h3>
+          <p data-i18n="skill_git_desc">Versiyalar nazorati, Branching, GitHub Actions, Team collaboration</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+        </div>
+
+        <!-- Clean Code / SOLID -->
+        <div class="skill-card" data-category="arch">
+          <div class="skill-header">
+            <div class="skill-icon-wrap"><i class="fas fa-cubes"></i></div>
+            <span class="skill-level-badge">85%</span>
+          </div>
+          <h3>SOLID & Clean Code</h3>
+          <p data-i18n="skill_solid_desc">Clean Code, SOLID, DRY, KISS, Design Patterns (Singleton, Factory, Builder)</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width: 85%;"></div></div>
+        </div>
+
+        <!-- Unit Testing -->
+        <div class="skill-card" data-category="arch">
+          <div class="skill-header">
+            <div class="skill-icon-wrap"><i class="fas fa-vial"></i></div>
+            <span class="skill-level-badge">80%</span>
+          </div>
+          <h3>JUnit 5 & Mockito</h3>
+          <p data-i18n="skill_unit_desc">JUnit 5, Mockito, Test-Driven tamoyillari asosida tekshirish</p>
+          <div class="skill-bar-wrap"><div class="skill-bar-fill" style="width: 80%;"></div></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       PROJECTS SECTION
+       ============================================================ -->
+  <section id="projects">
+    <div class="container">
+      <h2 data-i18n="projects_title">Amaliy Loyihalar</h2>
+      <p class="section-subtitle" data-i18n="projects_subtitle">Haqiqiy muammolarga ishlab chiqilgan backend tizimlari</p>
+
+      <div class="filter-tabs">
+        <button class="filter-btn project-filter-btn active" data-filter="all" data-i18n="project_tab_all">Barchasi</button>
+        <button class="filter-btn project-filter-btn" data-filter="java" data-i18n="project_tab_java">Java Core</button>
+        <button class="filter-btn project-filter-btn" data-filter="spring" data-i18n="project_tab_spring">Spring Boot</button>
+        <button class="filter-btn project-filter-btn" data-filter="bot" data-i18n="project_tab_bot">Telegram Bot</button>
+      </div>
+
+      <div class="projects-grid">
+        <!-- Project 1: Restaurant -->
+        <div class="project-card" data-category="java">
+          <div class="project-thumb">
+            <img src="img/project-restaurant.svg" alt="Restoran Tizimi">
+            <span class="project-badge-corner">Java 21</span>
+          </div>
+          <div class="project-body">
+            <h3 data-i18n="project_1_title">Restoran Boshqaruv Tizimi</h3>
+            <p data-i18n="project_1_desc">Stollarni band qilish, ofitsiantlar va buyurtmalar navbati, taomlar menyusi va chek chiqarishni avtomatlashtiruvchi yuqori tezlikdagi tizim.</p>
+            <div class="card-tags">
+              <span>Java Core</span>
+              <span>OOP</span>
+              <span>Collections</span>
+              <span>Multithreading</span>
+            </div>
+            <div class="project-actions">
+              <button class="project-btn-detail" data-project-modal="restaurant">
+                <span data-i18n="project_view_btn">Batafsil ko'rish</span> <i class="fas fa-arrow-right"></i>
+              </button>
+              <a href="https://github.com/AbdulahadMahmudjonov/RestaurantManagement" target="_blank" rel="noopener" class="project-btn-code" title="View Source on GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 2: Education CRM -->
+        <div class="project-card" data-category="spring">
+          <div class="project-thumb">
+            <img src="img/project-education.svg" alt="O'quv Markazi CRM">
+            <span class="project-badge-corner">Spring Boot</span>
+          </div>
+          <div class="project-body">
+            <h3 data-i18n="project_2_title">O'quv Markazi CRM Tizimi</h3>
+            <p data-i18n="project_2_desc">Talabalar ro'yxati, guruhlar davomati, to'lovlar jadvali va o'qituvchilar yuklamasini to'liq nazorat qiluvchi kompleks backend platforma.</p>
+            <div class="card-tags">
+              <span>Spring Boot</span>
+              <span>PostgreSQL</span>
+              <span>JPA/Hibernate</span>
+              <span>REST API</span>
+            </div>
+            <div class="project-actions">
+              <button class="project-btn-detail" data-project-modal="education">
+                <span data-i18n="project_view_btn">Batafsil ko'rish</span> <i class="fas fa-arrow-right"></i>
+              </button>
+              <a href="https://github.com/AbdulahadMahmudjonov/EduCenterCRM" target="_blank" rel="noopener" class="project-btn-code" title="View Source on GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 3: Banking API -->
+        <div class="project-card" data-category="spring">
+          <div class="project-thumb">
+            <img src="img/project-banking.svg" alt="Banking REST API">
+            <span class="project-badge-corner">FinTech REST</span>
+          </div>
+          <div class="project-body">
+            <h3 data-i18n="project_3_title">Bank & Hamyon REST API</h3>
+            <p data-i18n="project_3_desc">Mijozlar hisob raqamlari o'rtasida pul o'tkazmalari, tranzaksiyalar xavfsizligi va balans hisobini ta'minlovchi yuqori ishonchli FinTech API.</p>
+            <div class="card-tags">
+              <span>Spring Security</span>
+              <span>JWT</span>
+              <span>ACID Transactions</span>
+              <span>JUnit 5</span>
+            </div>
+            <div class="project-actions">
+              <button class="project-btn-detail" data-project-modal="banking">
+                <span data-i18n="project_view_btn">Batafsil ko'rish</span> <i class="fas fa-arrow-right"></i>
+              </button>
+              <a href="https://github.com/AbdulahadMahmudjonov/BankingWalletAPI" target="_blank" rel="noopener" class="project-btn-code" title="View Source on GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+
+        <!-- Project 4: Telegram Bot -->
+        <div class="project-card" data-category="bot">
+          <div class="project-thumb">
+            <img src="img/project-bot.svg" alt="Telegram Bot">
+            <span class="project-badge-corner">Bot API</span>
+          </div>
+          <div class="project-body">
+            <h3 data-i18n="project_4_title">Telegram e-Commerce Boti</h3>
+            <p data-i18n="project_4_desc">Mijozlar uchun tovarlarni tanlash, savatcha va buyurtma berish, administratorlar uchun esa yangi buyurtmalarni monitoring qilish boti.</p>
+            <div class="card-tags">
+              <span>Telegram API</span>
+              <span>Webhook</span>
+              <span>Async Processing</span>
+              <span>JSON</span>
+            </div>
+            <div class="project-actions">
+              <button class="project-btn-detail" data-project-modal="telegram_bot">
+                <span data-i18n="project_view_btn">Batafsil ko'rish</span> <i class="fas fa-arrow-right"></i>
+              </button>
+              <a href="https://github.com/AbdulahadMahmudjonov/EcommerceTelegramBot" target="_blank" rel="noopener" class="project-btn-code" title="View Source on GitHub">
+                <i class="fab fa-github"></i>
+              </a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       ROADMAP / EDUCATION SECTION
+       ============================================================ -->
+  <section id="roadmap">
+    <div class="container">
+      <h2 data-i18n="roadmap_title">Rivojlanish & Yo'l Xaritasi</h2>
+      <p class="section-subtitle" data-i18n="roadmap_subtitle">Bosqichma-bosqich o'sish tarixi va yaqin kelajakdagi maqsadlarim</p>
+
+      <div class="timeline">
+        <!-- Step 1 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date" data-i18n="step_1_date">2023 - 2024</span>
+            <h3 data-i18n="step_1_title">Dasturlash Asoslari & Algoritmlar</h3>
+            <p data-i18n="step_1_desc">Algoritmik fikrlash, sintaksis, massivlar, satrlar va asosiy hisoblash mantiqlarini chuqur o'rganish.</p>
+          </div>
+        </div>
+
+        <!-- Step 2 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date" data-i18n="step_2_date">2024 - 2025</span>
+            <h3 data-i18n="step_2_title">Java Core & OOP Chuqur O'rganish</h3>
+            <p data-i18n="step_2_desc">Merosxo'rlik, polimorfizm, inkapsulyatsiya, abstraksiya, Collections Framework, istisnolar (Exceptions) va fayllar bilan ishlash.</p>
+          </div>
+        </div>
+
+        <!-- Step 3 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date" data-i18n="step_3_date">2025 - 2026</span>
+            <h3 data-i18n="step_3_title">Ma'lumotlar Bazasi & Spring Boot Ekotizimi</h3>
+            <p data-i18n="step_3_desc">PostgreSQL relyatsion bazasi, SQL so'rovlar, JDBC, Hibernate/JPA va Spring Boot orqali mustahkam REST API loyihalash.</p>
+          </div>
+        </div>
+
+        <!-- Step 4 -->
+        <div class="timeline-item">
+          <div class="timeline-dot"></div>
+          <div class="timeline-content">
+            <span class="timeline-date" data-i18n="step_4_date">Hozir & Kelajak</span>
+            <h3 data-i18n="step_4_title">Mikroxizmatlar & Highload Tizimlar</h3>
+            <p data-i18n="step_4_desc">Docker, Kubernetes, Apache Kafka, Redis kesh va taqsimlangan arxitektura bo'yicha bilimlarni mustahkamlash.</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       CONTACT SECTION
+       ============================================================ -->
+  <section id="contact">
+    <div class="container">
+      <h2 data-i18n="contact_title">Keling, gaplashamiz</h2>
+      <p class="section-subtitle" data-i18n="contact_subtitle">Loyiha, taklif, ish imkoniyati yoki shunchaki fikr almashish uchun yozing</p>
+
+      <div class="contact-layout">
+        <!-- Contact Form -->
+        <form id="contact-form" class="contact-form">
+          <div class="form-group">
+            <label for="form-name" data-i18n="contact_form_name">Ismingiz</label>
+            <input type="text" id="form-name" data-i18n-ph="contact_form_name_ph" placeholder="Masalan: Azimjon Yoqubov" required>
+          </div>
+
+          <div class="form-group">
+            <label for="form-contact" data-i18n="contact_form_contact">Telegram yoki Email</label>
+            <input type="text" id="form-contact" data-i18n-ph="contact_form_contact_ph" placeholder="Masalan: @azimjon yoki user@example.com" required>
+          </div>
+
+          <div class="form-group">
+            <label for="form-subject" data-i18n="contact_form_subject">Mavzu</label>
+            <input type="text" id="form-subject" data-i18n-ph="contact_form_subject_ph" placeholder="Loyiha bo'yicha / Hamkorlik / Savol">
+          </div>
+
+          <div class="form-group">
+            <label for="form-message" data-i18n="contact_form_message">Xabaringiz</label>
+            <textarea id="form-message" rows="5" data-i18n-ph="contact_form_message_ph" placeholder="Xabaringiz mazmunini batafsil yozing..." required></textarea>
+          </div>
+
+          <button type="submit" class="btn btn-primary">
+            <i class="fas fa-paper-plane"></i> <span data-i18n="contact_btn_send">Xabar yuborish</span>
+          </button>
+        </form>
+
+        <!-- Direct Contact Info Card -->
+        <div class="contact-info-card">
+          <div class="contact-info-header">
+            <h3 data-i18n="contact_title">Bog'lanish</h3>
+            <p data-i18n="contact_alt_title">// To'g'ridan-to'g'ri bog'lanish:</p>
+          </div>
+
+          <div class="direct-channels">
+            <a href="https://t.me/Abdulahad_Mahmudjonov" target="_blank" rel="noopener" class="channel-btn channel-tg">
+              <div class="channel-btn-left">
+                <i class="fab fa-telegram-plane"></i>
+                <span data-i18n="contact_tg_btn">Telegram orqali yozish</span>
+              </div>
+              <i class="fas fa-external-link-alt" style="font-size: 0.85rem;"></i>
+            </a>
+
+            <button id="copy-email-btn" class="channel-btn channel-email">
+              <div class="channel-btn-left">
+                <i class="fas fa-envelope"></i>
+                <span data-i18n="contact_email_btn">Email nusxalash</span>
+              </div>
+              <i class="far fa-copy" style="font-size: 0.85rem;"></i>
+            </button>
+          </div>
+
+          <div class="contact-meta-list">
+            <div class="meta-row">
+              <span class="meta-lbl" data-i18n="contact_location_lbl">Manzil:</span>
+              <span class="meta-val" data-i18n="contact_location_val">Toshkent, O'zbekiston</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-lbl" data-i18n="contact_status_lbl">Bandlik:</span>
+              <span class="meta-val highlight" data-i18n="contact_status_val">Hamkorlik va amaliyotga tayyor</span>
+            </div>
+            <div class="meta-row">
+              <span class="meta-lbl">GitHub:</span>
+              <a href="https://github.com/AbdulahadMahmudjonov" target="_blank" rel="noopener" class="meta-val" style="color: var(--accent); text-decoration: none;">@AbdulahadMahmudjonov</a>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ============================================================
+       FOOTER
+       ============================================================ -->
+  <footer>
+    <div class="container">
+      <div class="footer-left">
+        <p>&copy; 2026 Abdulahad Mahmudjonov. <span data-i18n="footer_rights">Barcha huquqlar himoyalangan.</span></p>
+        <p style="font-size: 0.8rem; color: var(--text-dim);" data-i18n="footer_built_with">Java & Sof Zamonaviy Texnologiyalar bilan yaratilgan</p>
+      </div>
+
+      <div id="backend-status-pill" class="server-status-pill" title="Server Status">
+        <span id="status-indicator" class="status-indicator"></span>
+        <span id="status-text" data-i18n="footer_status_checking">Tekshirilmoqda...</span>
+      </div>
+
+      <div class="social-links">
+        <a href="https://github.com/AbdulahadMahmudjonov" target="_blank" rel="noopener" aria-label="GitHub"><i class="fab fa-github"></i></a>
+        <a href="https://t.me/Abdulahad_Mahmudjonov" target="_blank" rel="noopener" aria-label="Telegram"><i class="fab fa-telegram-plane"></i></a>
+        <a href="mailto:mahmudjonov.dev@gmail.com" aria-label="Email"><i class="fas fa-envelope"></i></a>
+      </div>
+    </div>
+  </footer>
+
+  <!-- ============================================================
+       MODAL POPUP (PROJECT DETAILS & CV)
+       ============================================================ -->
+  <div id="modal-overlay" class="modal-overlay">
+    <div class="modal-card">
+      <button id="modal-close-btn" class="modal-close-btn" aria-label="Close modal">
+        <i class="fas fa-times"></i>
+      </button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ============================================================
+       TOAST CONTAINER & SCROLL-TO-TOP
+       ============================================================ -->
+  <div id="toast-container" class="toast-container"></div>
+  <button id="scroll-to-top" id="scroll-to-top" aria-label="Yuqoriga qaytish">
+    <i class="fas fa-arrow-up"></i>
+  </button>
+
+  <!-- JavaScript Scripts -->
+  <script src="js/translations.js"></script>
+  <script src="js/script.js"></script>
+</body>
+</html>
